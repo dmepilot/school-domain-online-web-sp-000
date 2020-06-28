@@ -10,25 +10,30 @@ class School
   end
   
   def add_student(student, grade)
-    if @roster[grade] == nil
-      @roster[grade] = []
-      @roster[grade] << student
+    if roster[grade] == nil
+      roster[grade] = []
+      roster[grade] << student
     else
-      @roster[grade] << student
+      roster[grade] << student
     end
   end
 
   def grade(grade)
-    @roster[grade]
+    roster[grade]
   end
   
   def sort
-   sorted_hash={}
-    sorted_hash=@roster.each_value do |v|
-        v.sort!
-      end
-        sorted_hash
+    #this style alters the original hash
+    #roster.each_value do |v|
+     #   v.sort!
+    #end 
+    
+    #this returns a new sorted hash
+    sorted_hash={}
+    roster.each do |k,v|
+      sorted_hash[k]=v.sort
+    end
+    sorted_hash
   end
-    
-    
+  
 end
